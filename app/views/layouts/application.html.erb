@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
+    <title>WOMregalino!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,18 +10,51 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-  <% if flash[:notice] %>
-    <div class="notification is-info">
-      <p class="notice"><%= notice %></p>
-    </div>
-  <% end %>
+  <body> 
+    <% if flash[:notice] %>
+        <div class="notification is-info">
+          <p class="notice"><%= notice %></p>
+        </div>
+    <% end %>
+    
+    <% if flash[:alert] %>
+          <div class="notification is-danger">
+          <p class="alert"><%= alert %></p>
+        </div>
+    <% end %>
 
-  <% if flash[:alert] %>
-      <div class="notification is-danger">
-      <p class="alert"><%= alert %></p>
+    <nav class="navbar is-warning">
+      <div class="navbar-brand">
+        <%= link_to root_path, class: "navbar-item" do %>
+          <h1 class="title is-4" style="font-family: cursive;">WOMregalino</h1>
+        <% end %>
+          
+        <% if user_signed_in? %>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                
+                <p class="control">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
+                </p>
+            </div>
+          </div>
+        </div>
+      <% else %>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-light" %>
+            </p>
+            <p class="control">
+              <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-light" %>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
