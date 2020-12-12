@@ -1,0 +1,51 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        アイテム編集
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_with model:@item do |f| %>
+          <div class="field">
+          <%= f.label :item_name, "アイテム名", class: "label" %>
+          <%= f.text_field :item_name, class: "input" %>
+          </div>
+
+        <div class="field">
+          <%= f.label :location, "エリア", class: "label" %>
+          <%= f.text_field :location, class: "input" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :price, "価格帯", class: "label" %>
+          <%= f.text_field :price, class: "input" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :content, "詳細内容", class: "label" %>
+          <%= f.text_area :content, class: "textarea" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :best_before_date, "日持ち", class: "label" %>
+          <%= f.text_field :best_before_date, class: "input" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :image, "イメージ画像", class: "label" %>
+          <%= f.attachment_field :image, class: "input" %>
+        </div>
+
+          <%= f.submit '投稿', class: "button is-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
