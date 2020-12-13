@@ -15,18 +15,33 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
-    @item.save
-    redirect_to item_path(@item)
+    if @item.save
+      redirect_to item_path(@item), notice: '投稿しました'
+    else
+      render :new
+    end
   end
 
   def edit
     @item = Item.find(params[:id])
+    if @item.user != current_user
+      redirect_to items_path, alert:'不正なアクセスです'
+    end
   end
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to item_path(@item)
+    if @item.update(item_params)
+      redirect_to item_path(@item), notice: '更新しました'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to items_path
   end
 
   private
