@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @reviews = @item.reviews
-
   end
 
   def create
@@ -12,7 +11,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to item_reviews_path(@review.item)
     else
-      @item = Item.find(params[:id])
+      @item = Item.find(params[:item_id])
       render "item/show"
     end
   end

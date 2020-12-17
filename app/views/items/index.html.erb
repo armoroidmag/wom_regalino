@@ -18,22 +18,21 @@
               <figure class="image is-4by3">
                 <%= link_to item_path(item) do %>
                   <%= attachment_image_tag item, :image %>
-                  <%= link_to item.item_name, item_path(item) %>
+                  <div class="title"><%= link_to item.item_name, item_path(item) %></div>
                 <% end %>
               </figure>
             </div>
+
             <div class="card-content">
               <div class="media">
                 <div class="media-left">
                   <figure class="image is-48x48">
                     <%= attachment_image_tag item.user, :profile_image, fallback: "no_image.png", class: "profile_image" %>
                   </figure>
-                </div>
-                <div class="media-content">
-                  <div class="title"><%=link_to item.user.username, user_path(item.user) %></div>
-                </div>
-              </div>
-              <span class="content">
+                  </div>
+                
+                <div class="media-light">
+                  <p><strong><%=link_to item.user.username, user_path(item.user) %></strong></p>
                 <% if current_user.already_liked?(item) %>
                   <%= link_to item_likes_path(item), method: :delete do %>
                     <i class="fas fa-heart size"></i>
@@ -43,17 +42,32 @@
                   <%= link_to item_likes_path(item), method: :post do %>
                     <i class="far fa-heart size"></i>
                   <% end %>
-                  <%= item.likes.count %>
+                  <strong><%= item.likes.count %></strong>
                 <% end %>
-              </span>
-
-              <div class="content">
-                <time><%= item.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+                <time is-left><%= item.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
               </div>
+              </div>
+                
+                <div class="card-footer">
+                <div class="card-footer-item-is-left">
+                <div class="content average-score">
+                  <div class="star-rating">
+                    <div class="star-rating-front" style="width: <%= item.review_score_percentage %>%">★★★★★</div>
+                    <div class="star-rating-back">★★★★★</div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="card-footer-item-is-light">
+                  <div class="average-score-display">
+                    <%= item.avg_score %>点
+                    （<%= item.reviews.count %>件のレビュー)
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
             </div>
-          </div>
-        </div>
       <% end %>
     </div>
-  </div>
+    </div>
 </section>
