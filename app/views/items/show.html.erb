@@ -36,7 +36,7 @@
             <%= @item.likes.count %>
           <% end %>
             </div>
-            <div class="content">
+            <div class="content is-3">
               <table class="table is-narrow">
                 <tr>
                   <th>商品</th>
@@ -53,6 +53,23 @@
           </div>
         </div>
       </div>
+
+      <div class="card-content">
+            <div class="content average-score">
+              <div class="star-rating mb-2">
+                <div class="star-rating-front" style="width <%= @item.review_score_percentage %>">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+              </div>
+              <div class="average-score-display ml-3 pt-2">
+                <%= @item.avg_score %>点（<%= @item.reviews.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render 'reviews/form', review: @review, item: @item %>
+      </div>
+    </div>
+  </div>
 
       <div class="column is-4">
         <article class="panel is-link">
@@ -71,6 +88,27 @@
           <% end %>
         </article>
       </div>
+      
+
+    <div class="colums">
+      <div class="colum is-one-fifth">
+        <div class="display is-inline-block">
+          <% @reviews.each do |review| %>
+            <div class="image is-48x48">
+              <%= attachment_image_tag review.user, :profile_image, fallback: "no_image.png", class: "profile_image" %>
+            </div>
+          </div>
+        </div>
+        <div class="colum">
+          <div class="balloon1">
+            <div class="display is-inline-block">
+              <td has-text-info><%= review.user.username %>さん</td>
+              <td>ランク<%= review.score %></td>
+              <td>コメント：<%= review.content %></td>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
     </div>
-  </div>
 </section>

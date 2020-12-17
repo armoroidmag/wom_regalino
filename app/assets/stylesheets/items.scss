@@ -5,3 +5,64 @@
   font-size: 2em;
   color:red;
 }
+
+.rating-box .ratings .fa{
+  font-size: 25px;
+  color: yellow;
+  cursor: pointer;
+}
+
+.main-rating{
+  display: flex;
+}
+
+.rating-value-display{
+  font-size: 20px;
+}
+
+.star-rating {
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  color: #ccc;
+}
+
+.average-score {
+  display: flex;
+}
+.average-score-display {
+  font-size: 16px;
+}
+.image is-48x48{
+  display: inline-block;
+}
+.balloon1{
+  position: relative;
+  padding: 20px;
+  display:inline-block;
+	vertical-align: top;
+  background-color: #fff3ad;
+  border-radius: 10px;   
+}
+.balloon1::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -15px;
+  top: 20px;
+  border-right: 15px solid #fff3ad;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
