@@ -60,26 +60,27 @@
                   <%= attachment_image_tag item, :image, fallback: "no_image.png" %>
                 <% end %>
               </figure>
+              <div class="subtitle ml-4"><%= link_to item.item_name, item_path(item) %></div>
             </div>
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
                   <%= link_to item_path(item), class: "panel-block" do %>
                     <span class="panel-icon">
-                      <i class="fas fa-book size" aria-hidden="true"></i>
+                      <i class="fas fa-book size1" aria-hidden="true"></i>
                     </span>
                     このアイテムを見る
                   <% end %>
                   <% if @user.id == current_user.id %>
                     <%= link_to edit_item_path(item), class: "panel-block" do %>
                       <span class="panel-icon">
-                        <i class="fas fa-edit size"></i>
+                        <i class="fas fa-edit size1"></i>
                       </span>
                       このアイテムを編集する
                     <% end %>
                     <%= link_to item_path(item), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
                       <span class="panel-icon">
-                        <i class="fas fa-trash size"></i>
+                        <i class="fas fa-trash size1"></i>
                       </span>
                       このアイテムを削除する
                     <% end %>
