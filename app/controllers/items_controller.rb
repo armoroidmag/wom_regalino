@@ -15,10 +15,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = Item.create(item_params)
     @item.user_id = current_user.id
     if @item.save
-      redirect_to item_path(@item), notice: '投稿しました'
+      @items = Item.order(created_at: :desc).limit(8)
+      redirect_to items_path(@item), notice: '投稿しました'
     else
       render :new
     end

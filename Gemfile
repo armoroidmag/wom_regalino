@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'rubocop-airbnb'
+  gem "bullet"
 end
 
 group :test do
@@ -63,4 +64,7 @@ gem 'paranoia'
 gem 'kaminari'
 gem 'ransack'
 gem 'simple_calendar', '~> 2.0'
+gem 'jquery-rails'
+gem 'refile-s3'
+gem 'geocoder'
 

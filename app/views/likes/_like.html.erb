@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+    <% if current_user.already_liked?(item) %>
+    <%= link_to item_likes_path(item), method: :delete, remote: true do %>
+      <i class="fas fa-heart size"></i>
+        <%= item.likes.count %>
+          <% end %>
+      <% else %>
+        <%= link_to item_likes_path(item), method: :post, remote: true do %>
+          <i class="far fa-heart size"></i>
+            <%= item.likes.count %>
+              <% end %>
+          <% end %>
+<% else %>
+    <i class="fa fa-heart size" aria-hidden="true">
+        <%= item.likes.count %>
+    </i>
+<% end %>

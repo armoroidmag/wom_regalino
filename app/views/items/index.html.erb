@@ -22,7 +22,6 @@
                 <% end %>
               </figure>
             </div>
-
             <div class="card-content">
               <div class="media">
                 <div class="media-left">
@@ -31,19 +30,11 @@
                   </figure>
                   </div>
                 
-                <div class="media-light">
+              <div class="media-light">
                   <p><strong><%=link_to item.user.username, user_path(item.user) %></strong></p>
-                <% if current_user.already_liked?(item) %>
-                  <%= link_to item_likes_path(item), method: :delete do %>
-                    <i class="fas fa-heart size"></i>
-                  <% end %>
-                  <%= item.likes.count %>
-                <% else %>
-                  <%= link_to item_likes_path(item), method: :post do %>
-                    <i class="far fa-heart size"></i>
-                  <% end %>
-                  <strong><%= item.likes.count %></strong>
-                <% end %>
+                    <div id="item_index_new">
+                      <%= render 'item_new', items: @items %>
+                    </div>
                 <div class="time ml-3 pt-1"><time><%= item.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新</div>
               </div>
               </div>
