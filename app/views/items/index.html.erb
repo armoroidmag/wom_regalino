@@ -32,9 +32,9 @@
                 
               <div class="media-light">
                   <p><strong><%=link_to item.user.username, user_path(item.user) %></strong></p>
-                    <div id="item_index_new">
-                      <%= render 'item_new', items: @items %>
-                    </div>
+                    <div id="index_like_<%= item.id %>">
+                <%= render 'likes/like', item: item %>
+                </div>
                 <div class="time ml-3 pt-1"><time><%= item.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新</div>
               </div>
               </div>
