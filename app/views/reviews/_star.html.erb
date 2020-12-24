@@ -1,0 +1,11 @@
+<div class="content average-score">
+    <div class="star-rating mb-2">
+      <div class="star-rating-front" style="width: <%= @item.review_score_percentage %>">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
+      </div>
+      <div class="average-score-display ml-3 pt-2">
+        <%= @item.avg_score %>点（<%= @item.reviews.count %>件のレビュー）
+      </div>
+    </div>
+</div>
+

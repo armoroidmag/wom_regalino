@@ -46,19 +46,11 @@
         </div>
       </div>
 
-      <div class="card-content">
-            <div class="content average-score">
-              <div class="star-rating mb-2">
-                <div class="star-rating-front" style="width <%= @item.review_score_percentage %>">★★★★★</div>
-                <div class="star-rating-back">★★★★★</div>
-              </div>
-              <div class="average-score-display ml-3 pt-2">
-                <%= @item.avg_score %>点（<%= @item.reviews.count %>件のレビュー）
-              </div>
-            </div>
-          </div>
-        </div>
-        <%= render 'reviews/form', review: @review, item: @item %>
+      <div class="cloumn is-4">
+        <%= render partial: 'reviews/star', review: @review, item: @item %>
+        <%= render partial: 'reviews/form', review: @review, item: @item %>
+        <%= javascript_pack_tag "modal.js",'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag "review.js",'data-turbolinks-track': 'reload' %>
       </div>
     </div>
   </div>

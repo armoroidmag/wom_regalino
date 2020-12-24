@@ -6,14 +6,22 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    @item = Item.find(params[:item_id])
+    # 投稿に紐づいたレビューを作成
+    @review = @item.reviews.build(review_params)
     @review.user_id = current_user.id
     if @review.save
-      redirect_to item_reviews_path(@review.item)
+      redirect_to "item/show"
     else
       @item = Item.find(params[:item_id])
       render "item/show"
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    render :index
   end
 
 
