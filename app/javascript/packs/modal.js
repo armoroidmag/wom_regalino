@@ -1,6 +1,8 @@
 var buttton = document.getElementById('button');
 var modal = document.getElementById('page-modal');
 var close = document.getElementById('hide');
+var button1 = document.getElementById('button1');
+var form = document.getElementById('form');
 //*var close = document.getElementsByClassName('modal-close');
 
 buttton.onclick = function(){
@@ -16,3 +18,7 @@ window.onclick = function(event){
       modal.style.display = 'none';
   }
 }
+
+button1.addEventListener('click', function(){
+  form.submit();
+});

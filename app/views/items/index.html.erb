@@ -36,15 +36,12 @@
                 <%= render 'likes/like', item: item %>
                 </div>
                 <div class="time ml-3 pt-1"><time><%= item.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新</div>
-                <% end %>
+                </div>
               </div>
             </div>
-                
-            <div class="card-footer">
-              <div class="card-footer-item-is-left">
-                <%= render partial: 'reviews/star', review: @review, item: @item %>
-              </div>
-            </div>
-      </div>
+          </div>
+        </div>
+      <% end %>
     </div>
+  </div>
 </section>
