@@ -13,7 +13,7 @@ function initMap() {
       });
       //クリックした際の情報ウィンドウ設定    
       var contentString =
-      '<h6>We will have our ノミカイ at this restaurant!</h6>';
+      '<h6>お店</h6>';
       var infowindow = new google.maps.InfoWindow({
         content: contentString, //情報ウィンドウ内のテキスト
         size: new google.maps.Size(350, 100) //情報ウィンドウのサイズ（幅、高さ）

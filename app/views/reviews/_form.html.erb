@@ -1,4 +1,5 @@
-<button type="button is-success" id="button">この商品のレビューをかく</button>
+<button type="button" id="button">この商品のレビューをかく</button>
+
 <div class="modal" id="page-modal">
 <form role="form" id="form">
   <div class="modal-background"></div>
@@ -9,7 +10,7 @@
     </header>
     <section class="modal-card-body">
       <div class="rating-box mt-3">
-      <%= form_for([@item,@score,@review], url: item_reviews_path(@item), remote: true) do |f| %>
+      <%= form_for([@item,@score,@review], url: item_reviews_path(@item), local: true) do |f| %>
       <div class="ratings mb-3">
         <span class="fa fa-star-o" id="star"></span>
         <span class="fa fa-star-o" id="star"></span>
@@ -24,6 +25,7 @@
     <%= f.hidden_field :score, id: "rating-value" %>
     <%= f.text_area :content, class: "textarea" %>
     <input type="submit" value="送信" id="button1">
+    ; <%= f.submit "登録", class: "button mt-3" %>
   <% end %>
   </form>
 </div>

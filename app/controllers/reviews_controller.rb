@@ -8,12 +8,18 @@ class ReviewsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     # 投稿に紐づいたレビューを作成
+    @review = Review.new(review_params)
     @review = @item.reviews.build(review_params)
     @review.user_id = current_user.id
+    # @reviews = @item.reviews
     if @review.save
-      redirect_to "item/show"
+      flash[:notice] = 'レビューを投稿しました。'
+      redirect_to item_review_path(@review.item)
+      # redirect_to 
     else
-      @item = Item.find(params[:item_id])
+      # @item = Item.find(params[:item_id])
+      flash.now[:alert] = '入力に不備があります。'
+      @item = Item.find(params[:id])
       render "item/show"
     end
   end
