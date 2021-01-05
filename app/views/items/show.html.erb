@@ -9,7 +9,7 @@
 </section>
 
 <div class="tile is-ancestor">
-  <div class ="tile is-vertical is-parent is-6">
+  <div class ="tile is-vertical is-parent is-7">
             <div class="card ml-4">
               <div class="card-image">
                 <figure class="image is-4by3">
@@ -31,10 +31,10 @@
         </div>
       </div>
 
-    <div class = "tile is-parent is-vertical is-5">
+    <div class = "tile is-parent is-vertical is-4">
       <div class="tile is-child">
         <p><strong>エリア</strong></p>
-          <div id="map" style="width:520px; height:350px">
+          <div id="map" style="width:420px; height:320px">
           <%= javascript_pack_tag "map.js",'data-turbolinks-track': 'reload' %>
       </div>
     </div>
@@ -58,14 +58,8 @@
           <% if @item.user.id == current_user.id %>
           <%= link_to "編集画面へ", edit_item_path(@item), class: "button is-success" %>
           <%= link_to "削除する", item_path(@item), method: :delete, class: "button is-danger" %>
-          <% end %>
-        </article>
-        </div>
-      </div>
-
-    <div class="tile is-child is-2">
-      <div class = "tile is-child">
-        <article class="panel is-link">
+          <% else%>
+          <article class="panel is-link">
           <p class="panel-heading">
           </p>
           <div class="panel-block">
@@ -80,8 +74,11 @@
             <%= @item.user.username %> さんのページへ
           <% end %>
         </article>
+          <% end %>
+        </article>
+        </div>
       </div>
-    </div>
+  </div>
 
     <div class="tile is-child pl-5">
         <%= render partial: 'reviews/star', review: @review, item: @item %>
