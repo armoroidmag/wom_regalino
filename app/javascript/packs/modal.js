@@ -19,6 +19,6 @@ window.onclick = function(event){
   }
 }
 
-button1.addEventListener('click', function(){
-  form.submit();
-});
+// button1.addEventListener('click', function(){
+  // submit();
+// });

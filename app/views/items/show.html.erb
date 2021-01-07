@@ -34,6 +34,8 @@
     <div class = "tile is-parent is-vertical is-4">
       <div class="tile is-child">
         <p><strong>エリア</strong></p>
+        <div id="keyword"><%= @item.location %></div>
+        <div id="target"></div>
           <div id="map" style="width:420px; height:320px">
           <%= javascript_pack_tag "map.js",'data-turbolinks-track': 'reload' %>
       </div>
@@ -48,7 +50,8 @@
                   <td><%= simple_format @item.content %></td>
                 </tr>
                 <tr>
-                  <th>日持ち</th><td><%=@item.best_before_date %></td>
+                  <th>日持ち
+                  <td><%=@item.best_before_date %>
                 </tr>
                 <tr>
                   <th>価格帯
@@ -82,12 +85,15 @@
 
     <div class="tile is-child pl-5">
         <%= render partial: 'reviews/star', review: @review, item: @item %>
+        <button type="button" id="button" class="button is-info is-light is-midium is-active ml-5">この商品のレビューをかく</button>
         <%= render partial: 'reviews/form', review: @review, item: @item %>
-        <%= javascript_pack_tag "modal.js",'data-turbolinks-track': 'reload' %>
-        <%= javascript_pack_tag "review.js",'data-turbolinks-track': 'reload' %>
+        <%#= javascript_pack_tag "modal.js",'data-turbolinks-track': 'reload' %>
+        <%#= javascript_pack_tag "review.js",'data-turbolinks-track': 'reload' %>
     </div>
 
+<% if false %>
     <section class= "section">
+      <% link_to item_reviews_path(@reviews) %>
         <% @reviews.each do |review| %>
           <div class="media">
             <figure class="media-left">
@@ -104,3 +110,4 @@
           </div>
         <% end %>
     </section>
+<% end %>

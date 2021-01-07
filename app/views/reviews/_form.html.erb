@@ -4,11 +4,11 @@
 <form role="form" id="form">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title is-pink">レビューする</p>
+    <header class="modal-card-head has-background-danger-light">
+      <p class="modal-card-title has-text-grey-light">レビューする</p>
       <button class="delete" aria-label="close" id="hide"></button>
     </header>
-    <section class="modal-card-body">
+    <section class="modal-card-body has-background-grey-light">
       <div class="rating-box mt-3">
       <%= form_for([@item,@score,@review], url: item_reviews_path(@item), local: true) do |f| %>
       <div class="ratings mb-3">
@@ -24,12 +24,11 @@
     <%= f.hidden_field :item_id, value: @item.id %>
     <%= f.hidden_field :score, id: "rating-value" %>
     <%= f.text_area :content, class: "textarea" %>
-    <input type="submit" value="送信" id="button1">
-    ; <%= f.submit "登録", class: "button mt-3" %>
+    <%= f.submit "登録", class: "button mt-3 has-background-danger-light has-text-grey" %>
   <% end %>
-  </form>
-</div>
     </section>
+    </form>
+</div>
 
 <%= javascript_pack_tag "review.js",'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag "modal.js",'data-turbolinks-track': 'reload' %>
