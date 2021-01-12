@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  # before_action :authenticate_user!, except: [:create]
+  before_action :authenticate_user!, except: [:create]
   def index
     @item = Item.find(params[:item_id])
     @reviews = @item.reviews
@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     @reviews = @item.reviews
     if @review.save
       flash[:notice] = 'レビューを投稿しました。'
-      redirect_to item_review_path(@review.item)
+      redirect_to item_path(@review.item)
     else
       @item = Item.find(params[:item_id])
       flash.now[:alert] = '入力に不備があります。'

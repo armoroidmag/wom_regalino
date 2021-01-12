@@ -1,12 +1,12 @@
-var buttton = document.getElementById('button');
-var modal = document.getElementById('page-modal');
-var close = document.getElementById('hide');
-var button1 = document.getElementById('button1');
-var form = document.getElementById('form');
+let buttton = document.getElementById('button');
+let modal = document.getElementById('page-modal');
+let close = document.getElementById('hide');
+let button1 = document.getElementById('button1');
+let form = document.getElementById('form');
 //*var close = document.getElementsByClassName('modal-close');
 
 buttton.onclick = function(){
-    modal.style.display = 'block';
+  modal.style.display = 'block';
 }
 
 close.onclick = function(){

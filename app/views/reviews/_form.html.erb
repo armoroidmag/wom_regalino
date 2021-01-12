@@ -1,7 +1,4 @@
-<button type="button" id="button">この商品のレビューをかく</button>
-
 <div class="modal" id="page-modal">
-<form role="form" id="form">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head has-background-danger-light">
@@ -23,11 +20,10 @@
     </div>
     <%= f.hidden_field :item_id, value: @item.id %>
     <%= f.hidden_field :score, id: "rating-value" %>
-    <%= f.text_area :content, class: "textarea" %>
+    <div id="reviewTexteria"><%= f.text_area :content, class: "textarea" %></div>
     <%= f.submit "登録", class: "button mt-3 has-background-danger-light has-text-grey" %>
   <% end %>
     </section>
-    </form>
 </div>
 
 <%= javascript_pack_tag "review.js",'data-turbolinks-track': 'reload' %>

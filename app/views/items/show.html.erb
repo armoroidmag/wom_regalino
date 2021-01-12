@@ -86,8 +86,6 @@
         <%= render partial: 'reviews/star', review: @review, item: @item %>
         <button type="button" id="button" class="button is-info is-light is-midium is-active ml-5">この商品のレビューをかく</button>
         <%= render partial: 'reviews/form', review: @review, item: @item %>
-        <%#= javascript_pack_tag "modal.js",'data-turbolinks-track': 'reload' %>
-        <%#= javascript_pack_tag "review.js",'data-turbolinks-track': 'reload' %>
     </div>
 
 <% if false %>
@@ -109,4 +107,35 @@
           </div>
         <% end %>
     </section>
+<% end %>
+
+<section class= "section">
+  <% @reviews.each do |review| %>
+    <div class="media">
+      <figure class="media-left">
+        <p class="image is-48x48">
+          <%= attachment_image_tag review.user, :profile_image, fallback: "no_image.png", class: "profile_image" %></p>
+      </figure>
+
+    <div class="media-content">
+        <p class="balloon1">
+          <td><strong><%= review.user.username %>さん</strong></td>
+          <td>ランク<%= review.score %></td>
+          <td>コメント：<%= review.content %></td>
+        </p>
+      </div>
+      </div>
+      <% end %>
+</section>
+
+<% if false %>
+<script>
+function inputChange(event){
+  let msg = document.getElementById('msg');
+  msg.innerText = event.currentTarget.value;
+  const txt = event.currentTarget.value;
+}
+let reviewTextarea = document.getElementById('reviewTextarea');
+reviewTextarea.addEventListener('change', inputChange);
+</script>
 <% end %>
