@@ -15,7 +15,16 @@
  */
 @import "bulma";
 
+$purple: #8A4D76;
+$pink: #FA7C91;
 
+$primary: $purple;
+$danger: $pink;
+
+
+.title{
+	color:saddlebrown;
+}
 
 .notification:not(:last-child){
 	margin-bottom: 0;

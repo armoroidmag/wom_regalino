@@ -1,1 +1,0 @@
-// $("#item_index_new").html("<%= escape_javascript(render 'items/item_new', items: @items) %>")
