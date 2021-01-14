@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :users
   resources :items do
+    collection do
+      get 'search'
+    end
     resource :likes, only: [:create, :destroy]
     resources :reviews, only: [:index, :create, :show]
   end

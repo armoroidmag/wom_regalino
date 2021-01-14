@@ -2,12 +2,16 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show]
   def index
     @items = Item.all
+    @q =Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def show
     @item = Item.find(params[:id])
     @review = Review.new
     @reviews = @item.reviews
+    @q =Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def new
@@ -47,9 +51,18 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def search
+    @q = Item.search(search_params)
+    @items = @q.result(distinct: true)
+  end
+
   private
   def item_params
     params.require(:item).permit(:item_name, :location, :price, :best_before_date, :content, :image)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 end
 

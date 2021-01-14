@@ -5,6 +5,24 @@
         アイテム一覧
       </h1>
     </div>
+    <div class="level-right">
+          <div class="field is-grouped is-right">
+            <p class="control">
+              <%= search_form_for @q do |f| %>
+                <%= f.search_field :item_name_cont, class:"input", placeholder:"キーワードで検索" %>
+            </p>
+            <p class="control">
+            <button class="button is-link is-focused my-2">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+            <span><%= f.submit '検索', class:"button is-link my-2" %></span>
+            </button>
+              <% end %>
+            </p>
+          </div>
+      </nav>
+    </div>
   </div>
 </section>
 
