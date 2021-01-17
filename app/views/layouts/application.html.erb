@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyDVnmEbUB9y8EThAFjQsW2zNhTvqFFwm8o&libraries=places,geometry&language=ja"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
-<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kranky&display=swap" rel="stylesheet">
   </head>
 
   <body> 
@@ -31,7 +31,7 @@
     <nav class="navbar is-warning">
       <div class="navbar-brand">
         <%= link_to root_path, class: "navbar-item" do %>
-          <h1 class="title is-3" style="font-family: 'Acme';">WOMregalino!</h1>
+          <h1 class="title is-3" style="font-family: 'Kranky', cursive;">WOMregalino!</h1>
         <% end %>
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
           <span></span>
@@ -43,10 +43,19 @@
         <% if user_signed_in? %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-item">
+        <a class ="button is-warning is-light">
+        <span class="icon">
+        <i class="fas fa-book-open"></i>
+        </span>
           <%= link_to "口コミ一覧", items_path, class: "navbar-item button is-warning is-light" %>
         </div>
         <div class="navbar-item">
+        <a class ="button is-warning is-light">
+        <span class="icon">
+          <i class="fas fa-gift"></i>
+          </span>
           <%= link_to "口コミする", new_item_path,  class: "navbar-item button is-warning is-light" %>
+          </a>
         </div>
           
           <div class="navbar-end">
