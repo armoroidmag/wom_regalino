@@ -1,0 +1,39 @@
+<div class="field is-grouped">
+  <div class="field has-addons">
+    <div class="control is-expanded">
+        <%= search_form_for @q do |f| %>
+        <%= f.search_field :item_name_or_location_cont, class:"input", placeholder:"キーワードで検索" %>
+    </div>
+        <div class="control">
+          <button class="button is-info is-focused ">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+            <span><%= f.submit '検索', class:"button is-info" %></span>
+          </button>
+        </div>
+        <% end %>
+        <div class="field px-2">
+          <p class="control">
+            <button type="button" id="search-btn" style="background-color:#8A4D76" class="button has-text-white-ter is-midium is-active modal-btn "><i class="fab fa-suse"></i>詳細検索</button>
+          </p>
+  </div>
+</div>
+
+<div class="modal" id="page-modal2" >
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete btn-close" aria-label="close" id="hide2"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
+<%= javascript_pack_tag "modal.js",'data-turbolinks-track': 'reload' %>

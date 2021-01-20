@@ -7,35 +7,33 @@
             アイテム一覧
           </h1>
         </div>
-      
         <div class="level-right">
-          <div class="field is-grouped">
-            <div class="field has-addons">
-              <div class="control is-expanded">
-                <%= search_form_for @q do |f| %>
-                <%= f.search_field :item_name_or_location_cont, class:"input", placeholder:"キーワードで検索" %>
-              </div>
-              <div class="control">
-                <button class="button is-link is-focused ">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-                <span><%= f.submit '検索', class:"button is-link" %></span>
-                </button>
-              </div>
-            </div>
-            <div class="field px-2">
-              <p class="control">
-            <button type="button" id="button" style="background-color:#8A4D76" class="button has-text-white-ter is-midium is-active "><i class="fab fa-suse"></i>詳細検索</button>
-                <% end %>
-              </p>
-            </div>
-          </div>
+          <%= render partial: 'search_form' %>
         </div>
       </nav>
     </div>
   </div>
 </section>
+
+<script>
+const button2 = document.getElementById('search-btn');
+const modal2= document.getElementById('page-modal2');
+const close2 = document.getElementById('hide2');
+
+button2.onclick = function(){
+    modal2.style.display = 'block';
+  }
+  
+close2.onclick = function(){
+    modal2.style.display = 'none';
+  }
+  
+window.onclick = function(event){
+    if (event.target.className == 'modal-background'){
+        modal2.style.display = 'none';
+    }
+  }
+  </script>
 
 <section class="section">
   <div class="container">
@@ -57,7 +55,7 @@
                   <figure class="image is-48x48">
                     <%= attachment_image_tag item.user, :profile_image, fallback: "no_image.png", class: "profile_image" %>
                   </figure>
-                  </div>
+                </div>
                 
               <div class="media-light">
                   <p><strong><%=link_to item.user.username, user_path(item.user) %></strong></p>

@@ -43,19 +43,19 @@
         <% if user_signed_in? %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-item">
-        <a class ="button is-warning is-light">
-        <span class="icon">
+        <p class="control">
+        <button class ="button is-warning is-light is-rounded ">
         <i class="fas fa-book-open"></i>
-        </span>
-          <%= link_to "口コミ一覧", items_path, class: "navbar-item button is-warning is-light" %>
+        <%= link_to "口コミ一覧", items_path, :style=>"color: #947600;" %>
+        </button>
+        </p>
         </div>
+
         <div class="navbar-item">
-        <a class ="button is-warning is-light">
-        <span class="icon">
-          <i class="fas fa-gift"></i>
-          </span>
-          <%= link_to "口コミする", new_item_path,  class: "navbar-item button is-warning is-light" %>
-          </a>
+        <button class ="button is-warning is-light is-rounded px-2">
+        <i class="fas fa-gift"></i>
+        <%= link_to "口コミする", new_item_path, :style=>"color: #947600;" %>
+        </button>
         </div>
           
           <div class="navbar-end">
