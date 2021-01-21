@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   has_many :reviews, dependent: :destroy
   attachment :image
 
+  acts_as_taggable
+
   with_options presence:true do
     validates :item_name
     validates :location
