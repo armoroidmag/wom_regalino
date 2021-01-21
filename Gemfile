@@ -67,4 +67,4 @@ gem 'simple_calendar', '~> 2.0'
 gem 'jquery-rails'
 gem 'refile-s3'
 gem 'geocoder'
-
+gem 'acts-as-taggable-on', '~> 7.0'

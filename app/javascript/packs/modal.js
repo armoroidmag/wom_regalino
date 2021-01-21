@@ -46,7 +46,6 @@ modalBtn.forEach(function(e) {
   // Listen for OUTSIDE Click
   window.addEventListener('click', outsideClick);
   
-
   button2.onclick = function(){
     modal2.style.display = 'block';
   }
