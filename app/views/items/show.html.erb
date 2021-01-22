@@ -18,6 +18,11 @@
 <section>
 <div class="container is-fluid py-2">
   <div class="notification is-primary">
+    
+    <%= @item.tag_list.each do |tag| %>
+    <span class="tag is-primary is-light is-large">#<%= tag %></span>
+    
+    <% end %>
     This container is <strong>fluid</strong>: it will have a 32px gap on either side, on any
     viewport size.
   </div>
