@@ -35,6 +35,16 @@ window.onclick = function(event){
   }
   </script>
 
+<section>
+  <div class="container is-fluid py-2">
+    <div class="notification" style="background-color: #FA7C91">
+      <% @items.each do |item|%>
+      <td><%= render 'tag_list', tag_list: item.tag_list %></td>
+      <% end %>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
