@@ -19,7 +19,7 @@
 <div class="container is-fluid py-2">
   <div class="notification is-primary">
     
-    <%= @item.tag_list.each do |tag| %>
+    <% @item.tag_list.each do |tag| %>
     <span class="tag is-primary is-light is-large">#<%= tag %></span>
     
     <% end %>
