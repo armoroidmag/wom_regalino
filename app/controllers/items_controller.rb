@@ -15,6 +15,9 @@ class ItemsController < ApplicationController
     @reviews = @item.reviews
     @q =Item.ransack(params[:q])
     @items = @q.result(distinct: true)
+    if params[:tag_name]
+      @items = Item.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def new
