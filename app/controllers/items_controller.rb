@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show]
+  
   def index
-    @items = Item.all
     @q =Item.ransack(params[:q])
-    @items = @q.result(distinct: true)
+    @items = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(6)
     if params[:tag_name]
       @items = Item.tagged_with("#{params[:tag_name]}")
     end
@@ -15,9 +15,6 @@ class ItemsController < ApplicationController
     @reviews = @item.reviews
     @q =Item.ransack(params[:q])
     @items = @q.result(distinct: true)
-    if params[:tag_name]
-      @items = Item.tagged_with("#{params[:tag_name]}")
-    end
   end
 
   def new
@@ -60,6 +57,7 @@ class ItemsController < ApplicationController
   def search
     @q = Item.search(search_params)
     @items = @q.result(distinct: true)
+    @items = @items.page(params[:page])
   end
 
   private
