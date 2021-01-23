@@ -22,6 +22,11 @@ $pink: #FA7C91;
 	color:saddlebrown;
 }
 
+.notification a:not(.button):not(.dropdown-item) {
+	color: currentColor;
+	text-decoration: none;
+}
+
 .notification:not(:last-child){
 	margin-bottom: 0;
 }
@@ -29,3 +34,4 @@ $pink: #FA7C91;
 .profile_image{
 	border-radius: 50%;
 }
+

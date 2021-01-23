@@ -36,10 +36,10 @@ window.onclick = function(event){
   </script>
 
 <section>
-  <div class="container is-fluid py-2">
+  <div class="container is-fluid py-2" id="tag">
     <div class="notification" style="background-color: #FA7C91">
-      <% @items.each do |item|%>
-      <td><%= render 'tag_list', tag_list: item.tag_list %></td>
+      <% @items.each do |item| %>
+      <%= render 'tag_list', tag_list: item.tag_list %>
       <% end %>
     </div>
   </div>
