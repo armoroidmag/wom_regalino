@@ -5,16 +5,19 @@ class ItemsController < ApplicationController
     @q =Item.ransack(params[:q])
     @items = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(6)
     if params[:tag_name]
-      @items = Item.tagged_with("#{params[:tag_name]}")
+      @items = Item.tagged_with("#{params[:tag_name]}").page(params[:page]).per(6)
     end
   end
 
   def show
+    @q =Item.ransack(params[:q])
     @item = Item.find(params[:id])
     @review = Review.new
     @reviews = @item.reviews
-    @q =Item.ransack(params[:q])
-    @items = @q.result(distinct: true)
+    if params[:tag_name]
+      @items = Item.tagged_with("#{params[:tag_name]}")
+    end
+    @items = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def new
