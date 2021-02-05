@@ -23,17 +23,43 @@
 <div class="modal" id="page-modal2" >
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Modal title</p>
+    <header class="modal-card-head" style="background-color: #FF8C00">
+      <p class="modal-card-title has-text-white has-text-weight-bold">詳細検索</p>
       <button class="delete btn-close" aria-label="close" id="hide2"></button>
     </header>
-    <section class="modal-card-body">
-      <!-- Content ... -->
-    </section>
+    <section class="modal-card-body is-large">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :item_name_or_location_cont, class:"input", placeholder:"キーワードで検索" %>
+        <%= f.label :価格帯, class:"label" %>
+        <div class="field">
+        <p class="control has-icons-left">
+        <span class="select">
+        <select>
+        <option selected>価格帯</option>
+        <select> <option><%= f.collection_select :price_gteq, @items, :id, :price, :include_blank => '指定なし'%></option>
+        </select>
+        </span>
+        <select> <option><%= select_tag 'location', options_from_collection_for_select(@items, :id, :location, :include_blank => '指定なし')%></option>
+        </select>
+        <span class="icon is-small is-left">
+        <i class="fas fa-globe"></i>
+        </span>
+        </p>
+        </div>
+        <p><%= f.label :price %></p>
+        <p><%= f.number_field :price_gteq%>以上〜</p>
+        <p><%= f.number_field :price_lt %>未満</p>
+        
+        <p><%= f.label :user_id_in, '投稿者' %></p>
+        <p><%= f.collection_check_boxes :user_id_in, @items, :id, :price %></p>
+        </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
+      <button class="button"><%= f.submit "検索", class: "button mt-3 has-background-danger-light has-text-grey has-text-weight-semibold" %></button>
       <button class="button">Cancel</button>
+      <% end %>
     </footer>
+    </div>
   </div>
 </div>
+
 <%= javascript_pack_tag "modal.js",'data-turbolinks-track': 'reload' %>
