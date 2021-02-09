@@ -23,25 +23,18 @@
               <tr>
                 <td class="is-size-4">
                   <strong><%= @user.username %></strong>
-                </td>
                 <% if @user.id == current_user.id %>
                 <td class="is-size-4">
                   <%= @user.email %>
-                </td>
                 <td>
                   <%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
-                </td>
                 <% end %>
               </tr>
             </table>
             <table class="table is-fullwidth">
               <tr>
-                <td>
-                  <%= @user.profile %>
-                </td>
-                <td>
-                  <%= render 'relationships/follow_button', user: @user %>
-                </td>
+                <td><%= @user.profile %>
+                <td> <%= render 'relationships/follow_button', user: @user %>
               </tr>
             </table>
             <div class="has-text-weight-semibold ml-5">
@@ -55,7 +48,17 @@
   </div>
 </section>
 
-<section class="section">
+  <div class="tabs">
+    <div class='tab-buttons'>
+      <span class="content1">マイアイテム</span>
+      <span class="content2">Music</span>
+      <div id='lamp' class='content1'></div>
+    </div>
+  </div>
+
+<div class='tab-content'>
+
+<div class='content1'>
   <div class="container">
     <div class="columns is-multiline">
       <% @user.items.each do |item| %>
@@ -67,7 +70,7 @@
                   <%= attachment_image_tag item, :image, fallback: "no_image.png" %>
                 <% end %>
               </figure>
-              <div class="subtitle ml-4"><%= link_to item.item_name, item_path(item) %></div>
+            <div class="subtitle ml-4"><%= link_to item.item_name, item_path(item) %></div>
             </div>
             <div class="card-content">
               <div class="media">
@@ -78,29 +81,55 @@
                     </span>
                     このアイテムを見る
                   <% end %>
-                  <% if @user.id == current_user.id %>
-                    <%= link_to edit_item_path(item), class: "panel-block" do %>
-                      <span class="panel-icon">
-                        <i class="fas fa-edit size1"></i>
-                      </span>
-                      このアイテムを編集する
-                    <% end %>
-                    <%= link_to item_path(item), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
-                      <span class="panel-icon">
+                <% if @user.id == current_user.id %>
+                  <%= link_to edit_item_path(item), class: "panel-block" do %>
+                    <span class="panel-icon">
+                      <i class="fas fa-edit size1"></i>
+                    </span>
+                    このアイテムを編集する
+                  <% end %>
+                  <%= link_to item_path(item), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
+                    <span class="panel-icon">
                         <i class="fas fa-trash size1"></i>
-                      </span>
-                      このアイテムを削除する
-                    <% end %>
+                    </span>
+                    このアイテムを削除する
+                  <% end %>
                   <% end %>
                 </div>
               </div>
-              <div class="content">
+            <div class="content">
                 <time><%= item.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
-              </div>
             </div>
           </div>
         </div>
+      </div>
       <% end %>
     </div>
   </div>
-</section>
+</div>
+  
+<div class='content2'>
+  This is the content of 2 container.This will be open when button 2 is clicked.This is the content of 2 container.This will be open when button 2 is clicked.This is the content of 2 container.This will be open when button 2 is clicked.</div>
+  </div>
+</div>
+</div>
+
+<div class='credit'>
+</div>
+
+<script>
+$('.tab-content>div').hide();
+$('.tab-content>div').first().slideDown();
+  $('.tab-buttons span').click(function(){
+    var thisclass=$(this).attr('class');
+    $('#lamp').removeClass().addClass('#lamp').addClass(thisclass);
+    $('.tab-content>div').each(function(){
+      if($(this).hasClass(thisclass)){
+        $(this).fadeIn(800);
+      }
+      else{
+        $(this).hide();
+      }
+    });
+  });
+</script>

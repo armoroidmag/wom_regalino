@@ -1,3 +1,56 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.tabs{
+  font-size:26px;
+  width:80%;
+  margin:0 auto;
+  position:relative;
+}
+.tab-buttons span{
+  font-size:20px;
+  cursor:pointer;
+  border-bottom:4px solid #ddd;
+  display:inline-block;
+  width:100%;
+  text-align:center;
+  height:40px;
+  line-height:40px;
+}
+// .tab-content{
+//   border-bottom:3px solid #ddd;
+//   padding:15px;
+//   background:#eee;
+//   display:inline-block;
+//   font:400 13px 'open sans',sans-serif;
+//   color:#333;
+// }
+#lamp{
+  width:30%;
+  height:2px;
+  background: #ddd;
+  display:block;
+  position:absolute;
+  top:40px;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
+}
+#lamp.content2{
+  left:30%;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
+}
+
+#lamp.content1{
+  left:10%;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
+}
