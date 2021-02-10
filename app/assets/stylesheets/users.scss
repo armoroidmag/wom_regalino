@@ -4,20 +4,48 @@
 
 
 .tabs{
-  font-size:26px;
   width:80%;
-  margin:0 auto;
+  font-size:25px;
+  margin:10 30;
   position:relative;
+  display: flex;
+  // align-items: center;
 }
 .tab-buttons span{
-  font-size:20px;
+  font-size:25px;
   cursor:pointer;
   border-bottom:4px solid #ddd;
   display:inline-block;
-  width:100%;
+  width: 80%;
   text-align:center;
-  height:40px;
-  line-height:40px;
+  height:45px;
+  line-height:45px;
+}
+#lamp{
+  width:17%;
+  height:4px;
+  background:rgba(128, 129, 127, 0.986);
+  display:block;
+  position:absolute;
+  top:42px;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
+}
+#lamp.content2{
+  left:22%;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
+}
+#lamp.content1{
+  left:4.5%;
+  transition: all .3s ease-in;
+-o-transition: all .3s ease-in;
+-webkit-transition: all .3s ease-in;
+-moz-transition: all .3s ease-in;
 }
 // .tab-content{
 //   border-bottom:3px solid #ddd;
@@ -27,30 +55,3 @@
 //   font:400 13px 'open sans',sans-serif;
 //   color:#333;
 // }
-#lamp{
-  width:30%;
-  height:2px;
-  background: #ddd;
-  display:block;
-  position:absolute;
-  top:40px;
-  transition: all .3s ease-in;
--o-transition: all .3s ease-in;
--webkit-transition: all .3s ease-in;
--moz-transition: all .3s ease-in;
-}
-#lamp.content2{
-  left:30%;
-  transition: all .3s ease-in;
--o-transition: all .3s ease-in;
--webkit-transition: all .3s ease-in;
--moz-transition: all .3s ease-in;
-}
-
-#lamp.content1{
-  left:10%;
-  transition: all .3s ease-in;
--o-transition: all .3s ease-in;
--webkit-transition: all .3s ease-in;
--moz-transition: all .3s ease-in;
-}
