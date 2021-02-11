@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
-  resources :users
+  resources :users do
+    collection do
+      get :likes
+    end
+  end
   resources :items do
     collection do
       get 'search'
