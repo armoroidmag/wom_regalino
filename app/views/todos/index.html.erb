@@ -1,2 +1,40 @@
 <h1>Todos#index</h1>
-<p>Find me in app/views/todos/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>todo</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>#</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%= todo.reciever %></td>
+        <td><%= todo.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= link_to 'Show', todo %></td>
+        <td><%= link_to 'Edit', edit_todo_path(todo.id) %></td>
+        <td><%= link_to 'Destroy',todo_path(todo.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '予定をかく', new_todo_path %>
+
+<%= month_calendar events: @todos do |date, todos| %>
+  <%= date.day %>
+
+  <% todos.each do |todo| %>
+    <div>
+      <%= link_to todo.title, todo %>
+    </div>
+  <% end %>
+<% end %>
