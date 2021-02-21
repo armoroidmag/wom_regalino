@@ -33,6 +33,7 @@ module Myapp
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
+    config.beginning_of_week = :sunday
     config.generators.system_tests = nil
     config.time_zone = 'Tokyo'
     config.generators do |g|

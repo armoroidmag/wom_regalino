@@ -1,12 +1,12 @@
 <h1>Todos#new</h1>
 <%= form_with(model: @todo, local: true) do |form| %>
 
-  <div class="reciever">
-    <%= form.label :reciever %>
-    <%= form.text_field :reciever %>
+  <div class="receiver">
+    <%= form.label :receiver %>
+    <%= form.text_field :receiver %>
   </div>
 
-    <div class="time">
+  <div class="time">
     <%= form.label :start_time %>
     <%= form.datetime_select :start_time %>
   </div>
@@ -15,7 +15,6 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
-
 
   <div class="submit">
     <%= form.submit %>

@@ -12,8 +12,8 @@ class TodosController < ApplicationController
   end
 
   def create
-    Todo.create(todo_parameter)
-    redirect_to todos_path
+    @todo = Todo.create(todo_params)
+      redirect_to todos_path, notice: '投稿しました'
   end
 
   def destroy
@@ -28,7 +28,7 @@ class TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    if @todo.update(todo_parameter)
+    if @todo.update(todo_params)
       redirect_to todos_path, notice: "編集しました"
     else
       render 'edit'
@@ -36,9 +36,7 @@ class TodosController < ApplicationController
   end
 
   private
-  def 
-
-  def todo_parameter
-    params.require(:todo).permit(:user, :item, :receiver, :content, :start_time)
+  def todo_params
+    params.require(:todo).permit(:user_id, :item_id, :receiver, :content, :start_time)
   end
 end

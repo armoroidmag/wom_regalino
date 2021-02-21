@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :todos, dependent: :destroy
+  
   attachment :image
 
   acts_as_taggable

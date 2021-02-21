@@ -1,9 +1,8 @@
 <h1>Todos#show</h1>
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>タイトル</strong>
-  <%= @todo.reciever %>
+  <%= @todo.receiver %>
 </p>
 
 <p>
@@ -16,5 +15,5 @@
   <%= @todo.content %>
 </p>
 
-<%= link_to 'Edit', edit_todo_path(@todo) %> |
+<%= link_to 'Edit', edit_todo_path(@todo) %> 
 <%= link_to 'Back', todos_path %>
