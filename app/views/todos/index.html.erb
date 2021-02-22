@@ -10,43 +10,43 @@
 
 <div class="columns">
   <div class="submenu column is-3">
-<aside class="box">
-  <%= link_to "予定をかく", todos_path, class: "button is-danger is-light is-focused" %>
-  <br>
-  <br>
-  <br>
-  <div class="list">
-    <% @todos.each do |todo| %>
-      <tr>
-        <td><%= todo.receiver %></td>
-        <td><%= todo.content %></td>
-        <td><%= todo.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= link_to 'Show', todos_path %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo.id) %></td>
-        <td><%= link_to 'Destroy',todo_path(todo.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </div>
-</aside>
+    <aside class="content is-centerd mx-3 py-3">
+      <%= link_to "予定をかく", new_todo_path, class: "button is-danger is-light is-focused is-midium" %>
+
+  <div class="media-content py-3">
+    
+      <div class="list">
+        <% @todos.each do |todo| %>
+        <div class="pop my-2">
+          <tr>
+            <h3><%= todo.start_time.strftime("%Y-%m-%d %H:%M") %></h3>
+            <td><strong><%= todo.receiver %></strong></td>
+            <td><%= todo.content %></td>
+            <td><%= link_to 'Show', todos_path %></td>
+            <td><%= link_to 'Edit', edit_todo_path(todo.id) %></td>
+            <td><%= link_to 'Destroy',todo_path(todo.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </aside>
 </div>
 
 <div class="column is-9">
-<div class="calendar">
-<%= month_calendar events:@todos do |date, todos| %>
-  <%= date.day %>
-  <ul class="event-list">
-    <% todos.each do |todo| %>
-    <li class="list">
-      <%= link_to edit_todo_path(todo.id) do %>
-        <%= todo.receiver %>
-        <%= todo.content %>
-      <% end %>
-    </li>
-  </ul>
+  <div class="calendar">
+    <%= month_calendar events:@todos do |date, todos| %>
+      <%= date.day %>
+        <ul class="event-list">
+          <% todos.each do |todo| %>
+        <li class="list">
+          <%= link_to edit_todo_path(todo.id) do %>
+          <%= todo.receiver %>
+          <%= todo.content %>
+          <% end %>
+        </li>
+        </ul>
+        <% end %>
     <% end %>
-<% end %>
+  </div>
 </div>
-
-</div>
-
-

@@ -1,3 +1,21 @@
 // Place all the styles related to the todos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.calendar-title{
+  font-size:40px;
+  
+}
+.pop{
+  position: relative;
+  padding: 20px;
+  display:inline-block;
+	vertical-align: top;
+  background-color: #ffc0cb;
+  border-radius:10px;
+}
+.calendar {
+.has-events{
+  background-color: #d8e698;
+}
+}
