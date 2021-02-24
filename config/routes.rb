@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :likes
     end
+    
   end
   resources :items do
     collection do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     end
     resource :likes, only: [:create, :destroy]
     resources :reviews, only: [:index, :create, :show]
+    resources :todos
   end
   resources :relationships, only: [:create, :destroy]
   resources :todos

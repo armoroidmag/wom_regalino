@@ -1,23 +1,56 @@
-<h1>Todos#new</h1>
-<%= form_with(model: @todo, local: true) do |form| %>
-
-  <div class="receiver">
-    <%= form.label :receiver %>
-    <%= form.text_field :receiver %>
+<section class="hero" style="background-color: #765544;">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title" style="color:#eee7e0;">
+        予定をかく
+      </h1>
+    </div>
   </div>
+</section>
 
-  <div class="time">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
-  </div>
+<section class="section">
+  <%= form_with(model: @todo, local: true) do |f| %>
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-7">
+          <div class="field">
+            <%= f.label :receiver, "贈る相手", class: "label" %>
+            <%= f.text_field :receiver, class: "input" %>
+          </div>
 
-  <div class="content">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
+          <div class="field">
+            <%= f.label :start_time, "日程", class: "label" %>
+            <%= f.datetime_select :start_time, class: "label" %>
+          </div>
 
-  <div class="submit">
-    <%= form.submit %>
-  </div>
+            <%= f.label :item_name, "サイト内アイテムから選ぶ", class: "label" %>
+            <div class="select">
+            <%= form_for @todo do |f| %>
+              <%= f.collection_select :item_id, Item.all, :id, :item_name, :include_blank => true %>
+            <% end %>
+          </div>
+        <br>
+        <br>
+            <%= f.label :item_name, "お気に入りアイテムから選ぶ", class: "label" %>
+              <div class="select">
+            <%= form_for @todo do |f| %>
+              <%= f.collection_select :item_id, @user.like_items, :id, :item_name, :include_blank => true %>
+            <% end %>
+          </div>
+        <br>
+        <br>
+        <div class="field">
+          <%= f.label :content, "詳細内容", class: "label" %>
+          <%= f.text_area :content, class: "textarea" %>
+        </div>
 
-<% end %>
+        <div class="actions">
+          <%= f.submit "予定を登録する", class: "button is-success" %>
+        </div>
+    
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
+

@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :reviews, dependent: :destroy
   
+  
   attachment :image
 
   acts_as_taggable

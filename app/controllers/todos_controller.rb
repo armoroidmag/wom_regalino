@@ -1,10 +1,14 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @todos = Todo.all.order(created_at: :asc)
   end
 
   def new
     @todo = Todo.new
+    @item = Item.all.order(created_at: :asc)
+    @user = current_user
+    like_items = @user.like_items
+  
   end
 
   def show
@@ -38,5 +42,9 @@ class TodosController < ApplicationController
   private
   def todo_params
     params.require(:todo).permit(:user_id, :item_id, :receiver, :content, :start_time)
+  end
+
+  def item_params
+    params.require(:item).permit(:item_name, :location, :price, :best_before_date, :content, :image, :tag_list)
   end
 end
