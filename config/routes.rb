@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
     resource :likes, only: [:create, :destroy]
     resources :reviews, only: [:index, :create, :show]
-    resources :todos
   end
   resources :relationships, only: [:create, :destroy]
   resources :todos

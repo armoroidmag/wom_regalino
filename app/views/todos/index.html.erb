@@ -20,10 +20,23 @@
           <tr>
             <h3><%= todo.start_time.strftime("%Y-%m-%d %H:%M") %></h3>
             <td><strong><%= todo.receiver %></strong></td>
+            <td><%= todo.item_id %></td>
             <td><%= todo.content %></td>
-            <td><%= link_to 'Show', todos_path %></td>
-            <td><%= link_to 'Edit', edit_todo_path(todo.id) %></td>
-            <td><%= link_to 'Destroy',todo_path(todo.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <span class="panel-icon">
+                <i class="fas fa-book size1" aria-hidden="true"></i>
+            </span>
+            <td><%= link_to 'Show',todo_path(todo.id) %>
+                <i class="fas fa-show size1"></i>
+            </span>
+            <span class="panel-icon">
+                <i class="fas fa-edit size1"></i>
+            </span>
+            <td><%= link_to 'Edit',edit_todo_path(todo.id) %></td>
+            
+            <span class="panel-icon">
+                <i class="fas fa-trash size1"></i>
+            </span>
+            <td><%= link_to 'Destroy',todo_path(todo.id), method: :delete, data: { confirm: '削除します。よろしいですか？' } %></td>
           </tr>
           </div>
         <% end %>
@@ -40,7 +53,7 @@
           <% todos.each do |todo| %>
         <li class="list">
           <%= link_to edit_todo_path(todo.id) do %>
-          <%= todo.receiver %>
+          <strong><%= todo.receiver %></strong>
           <%= todo.content %>
           <% end %>
         </li>
@@ -49,3 +62,6 @@
     <% end %>
   </div>
 </div>
+
+
+<%= javascript_pack_tag "modal.js",'data-turbolinks-track': 'reload' %>

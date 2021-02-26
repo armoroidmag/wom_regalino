@@ -1,14 +1,17 @@
 class TodosController < ApplicationController
   def index
     @todos = Todo.all.order(created_at: :asc)
+    @item = Item.all
+    @user = current_user
+    item_name = @user.item_ids
+    like_items = @user.like_items
   end
 
   def new
     @todo = Todo.new
-    @item = Item.all.order(created_at: :asc)
+    @item = Item.all
     @user = current_user
     like_items = @user.like_items
-  
   end
 
   def show
@@ -27,7 +30,11 @@ class TodosController < ApplicationController
   end
 
   def edit
+    @todos = Todo.all.order(created_at: :asc)
     @todo = Todo.find(params[:id])
+    @user = current_user
+    item_name = @user.item_ids
+    like_items = @user.like_items
   end
 
   def update
