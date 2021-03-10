@@ -1,19 +1,45 @@
-<h1>Todos#show</h1>
+<section class="hero" style="background-color: #5f6527;">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title" style="color:#eee7e0;">
+        個別予定を確認する
+      </h1>
+    </div>
+  </div>
+</section>
 
-<p>
-  <strong>タイトル</strong>
-  <%= @todo.receiver %>
-</p>
+<section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-7">
+          <p>
+          <strong>贈る相手</strong>
+          <%= @todo.receiver %>
+          </p>
+          
+          <p>
+          <strong>日時</strong>
+          <%= @todo.start_time.strftime("%Y-%m-%d %H:%M") %>
+          </p>
 
-<p>
-  <strong>時間</strong>
-  <%= @todo.start_time.strftime("%Y-%m-%d %H:%M") %>
-</p>
+          <p>
+            <% if @item_name != blank? %> 
+            <strong>アイテム名</strong>
+            <%= @todo.item_id %>
+          </P>
+            <% elsif @user.like_item != blank? %>
+            <%= @user.like_item %>
+            <else>
+          
+            <% end %>
+            <%= @todo.content %>
+        </div>
+      </div>
+    </div>
+</section>
+</div>
 
-<p>
-  <strong>内容</strong>
-  <%= @todo.content %>
-</p>
+
 
 <%= link_to 'Edit', edit_todo_path(@todo) %> 
 <%= link_to 'Back', todos_path %>
